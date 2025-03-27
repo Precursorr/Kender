@@ -40,15 +40,18 @@ body {
 }
 
 .logo {
-    color: var(--lemon-yellow);
-    font-weight: bold;
-    font-size: 1.5rem;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+.logo img {
+    height: 50px; /* Adjust this value to match your desired logo height */
+    width: auto;
+    display: block;
 }
 
 .logo:hover {
-    color: var(--white);
+    opacity: 0.9;
 }
 
 .nav-links {
@@ -691,5 +694,6 @@ footer {
         flex: none;
     }
 }
+
 
 
