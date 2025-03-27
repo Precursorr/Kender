@@ -7,6 +7,7 @@
     --dark-gray: #333;
 }
 
+/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +28,7 @@ body {
 
 /* Navigation */
 .navbar {
-    background-color: rgba(25, 25, 112, 0.95); /* Slightly lighter and transparent midnight blue */
+    background-color: rgba(25, 25, 112, 0.98);
     padding: 1rem 2rem;
     position: fixed;
     width: 100%;
@@ -39,65 +40,30 @@ body {
     align-items: center;
 }
 
-.logo {
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-}
-
 .logo img {
-    height: 50px; /* Adjust this value to match your desired logo height */
+    height: 50px;
     width: auto;
-    display: block;
-}
-
-.logo:hover {
-    opacity: 0.9;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
-
-.nav-links a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    padding: 0.5rem 1rem;
-}
-
-.nav-links a:hover {
-    color: var(--lemon-yellow);
 }
 
 /* Hero Section */
 .hero {
-    padding-top: 100px;
-    min-height: 40vh;
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
     display: flex;
     align-items: center;
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
+    justify-content: center;
 }
 
 .slideshow {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: 0;
 }
 
 .slide {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     opacity: 0;
     transition: opacity 1s ease-in-out;
     background-size: cover;
@@ -109,20 +75,16 @@ body {
     opacity: 1;
 }
 
-/* Add a dark overlay to ensure text readability */
 .slide::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(25, 25, 112, 0.6); /* Semi-transparent midnight blue */
+    inset: 0;
+    background: rgba(25, 25, 112, 0.8);
 }
 
 .hero-content {
     position: relative;
-    z-index: 1; /* Ensure content stays above slideshow */
+    z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
@@ -135,6 +97,7 @@ body {
     color: var(--lemon-yellow);
 }
 
+/* Buttons */
 .hero-buttons {
     display: flex;
     gap: 1rem;
@@ -142,7 +105,6 @@ body {
     margin-top: 2rem;
 }
 
-/* Buttons */
 .primary-button, .secondary-button {
     padding: 1rem 2rem;
     border-radius: 30px;
@@ -162,12 +124,14 @@ body {
     border: 2px solid var(--white);
 }
 
-.primary-button:hover, .secondary-button:hover {
+.primary-button:hover, 
+.secondary-button:hover {
     transform: translateY(-3px);
 }
 
-/* Product and Catalogue Grids */
-.product-grid, .catalogue-grid {
+/* Shared Grid Styles */
+.product-grid, 
+.catalogue-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -177,10 +141,29 @@ body {
     padding: 0 1rem;
 }
 
+/* Shared Section Styles */
+.featured-products,
+.catalogue-section,
+.about-section,
+.services-provided {
+    padding: 5rem 2rem;
+    background-color: var(--white);
+}
+
+.featured-products h2,
+.catalogue-section h2,
+.about-section h2,
+.services-provided h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--midnight-blue);
+    font-size: 2.5rem;
+}
+
+/* Product Items */
 .product-item {
-    width: calc((100% - 6rem) / 4); /* Divides space into 4 equal parts, accounting for gaps */
-    min-width: 250px; /* Slightly smaller minimum width */
-    max-width: 300px;
+    width: 300px;
+    flex: 0 0 300px;
     background-color: var(--gray);
     padding: 2rem;
     border-radius: 10px;
@@ -213,76 +196,44 @@ body {
     line-height: 1.5;
 }
 
-/* Catalogue Section */
-.catalogue-section {
-    padding: 5rem 2rem 2rem; /* Reduced bottom padding from 5rem to 2rem */
-    background-color: var(--white);
-}
-
-.catalogue-section h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    color: var(--midnight-blue);
-    font-size: 2.5rem;
-}
-
-.catalogue-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    justify-content: center;
-}
-
-@media (max-width: 768px) {
-    .catalogue-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-}
-
-.catalogue-grid .product-image {
-    width: 100%;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-}
-
-.catalogue-grid .product-item {
-    width: 300px;
-    flex: 0 0 300px;
-    background-color: var(--gray);
-    padding: 2rem;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Product Links */
+.product-link {
     text-decoration: none;
     color: inherit;
     display: block;
+    width: 300px;
+    flex: 0 0 300px;
 }
 
-.catalogue-grid .product-item:hover {
-    transform: translateY(-10px);
+.product-link:hover {
+    text-decoration: none;
 }
 
-.catalogue-grid .product-item h3 {
-    color: var(--midnight-blue);
-    margin-bottom: 1rem;
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
-    .catalogue-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        justify-content: center; /* Centers the entire grid */
+    .hero h1 {
+        font-size: 2rem;
     }
     
-    .product-item {
-        width: 100%; /* Ensures items take full width on mobile */
-        max-width: 300px; /* Prevents items from getting too wide */
+    .hero {
+        min-height: 50vh;
+    }
+    
+    .product-grid,
+    .catalogue-grid {
+        gap: 1.5rem;
+    }
+    
+    .product-item,
+    .product-link {
+        width: 100%;
+        max-width: 300px;
+        flex: none;
+    }
+    
+    .catalogue-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        justify-content: center;
     }
 }
 
@@ -720,6 +671,7 @@ footer {
         flex: none;
     }
 }
+
 
 
 
