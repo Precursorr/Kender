@@ -413,22 +413,22 @@ footer {
     }
 }
 
+.view-more {
+    text-align: right;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding: 0 1rem;
+}
 
+.view-more a {
+    color: var(--midnight-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.view-more a:hover {
+    color: var(--lemon-yellow);
+}
 
 
