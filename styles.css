@@ -591,30 +591,56 @@ footer {
     }
 }
 
-/* Featured Products Section */
+/* Section Divider Styles */
+.section-divider {
+    width: 100%;
+    background-color: var(--midnight-blue);
+    padding: 1.5rem 0;
+    margin: 0;
+}
+
+.section-divider h2 {
+    color: var(--white) !important;
+    text-align: center;
+    margin: 0 !important;
+    font-size: 2.5rem;
+}
+
+/* Update existing section styles */
 .featured-products {
-    padding: 5rem 2rem;
+    padding: 3rem 2rem 5rem;
     background-color: var(--white);
 }
 
 .featured-products h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    color: var(--midnight-blue);
-    font-size: 2.5rem;
+    display: none; /* Hide original heading */
 }
 
-/* Catalogue Section */
 .catalogue-section {
-    padding: 5rem 2rem;
+    padding: 3rem 2rem 5rem;
     background-color: var(--white);
 }
 
 .catalogue-section h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    color: var(--midnight-blue);
-    font-size: 2.5rem;
+    display: none; /* Hide original heading */
+}
+
+.about-location {
+    padding: 3rem 2rem 5rem;
+    background-color: var(--white);
+}
+
+.about-location h2 {
+    display: none; /* Hide original heading */
+}
+
+.services-provided {
+    padding: 3rem 2rem 5rem;
+    background-color: var(--white);
+}
+
+.services-provided h2 {
+    display: none; /* Hide original heading */
 }
 
 /* Shared Grid Styles */
