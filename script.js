@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.classList.toggle('active');
     });
 
-    // New back to top functionality
     const logo = document.getElementById('backToTop');
     
     logo.addEventListener('click', function() {
@@ -15,4 +14,22 @@ document.addEventListener('DOMContentLoaded', function() {
             behavior: 'smooth'
         });
     });
+
+    // New slideshow code
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    // Show first slide initially
+    slides[0].classList.add('active');
+
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    // Change slide every 8 seconds
+    setInterval(nextSlide, 8000);
 });
+
+
