@@ -834,7 +834,7 @@ footer {
 .section-divider {
     width: 100%;
     background-color: var(--midnight-blue);
-    padding: 0.63rem 0; /* Reduced by another 30% from 0.9rem */
+    padding: 0.2rem 0; /* Reduced by 30% from 0.9rem */
     margin: 0;
 }
 
@@ -842,7 +842,7 @@ footer {
     color: var(--white) !important;
     text-align: center;
     margin: 0 !important;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 /* Update existing section styles */
@@ -1211,6 +1211,7 @@ footer {
     position: relative;
     z-index: 2;
 }
+
 
 
 
