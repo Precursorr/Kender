@@ -672,20 +672,56 @@ footer {
 /* Update existing section styles */
 .featured-products {
     padding: 3rem 2rem 5rem;
-    background-color: var(--white);
+    position: relative;
+    background-image: url('assets/background/Bearings-Background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.featured-products h2 {
-    display: none; /* Hide original heading */
+/* Add a semi-transparent white overlay to ensure readability */
+.featured-products::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+}
+
+/* Ensure content stays above the overlay */
+.featured-products > * {
+    position: relative;
+    z-index: 2;
 }
 
 .catalogue-section {
     padding: 3rem 2rem 5rem;
-    background-color: var(--white);
+    position: relative;
+    background-image: url('assets/background/Teng-Tool-Background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.catalogue-section h2 {
-    display: none; /* Hide original heading */
+/* Add a semi-transparent white overlay to ensure readability */
+.catalogue-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+/* Ensure content stays above the overlay */
+.catalogue-section > * {
+    position: relative;
+    z-index: 2;
 }
 
 .about-location {
@@ -922,6 +958,92 @@ footer {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
+
+/* Fixed background section */
+.featured-products {
+    position: relative;
+    z-index: 2;
+    background-color: var(--white);
+}
+
+.catalogue-section {
+    position: relative;
+    z-index: 2;
+    background-color: var(--white);
+}
+
+/* Add this new style for the fixed background */
+.fixed-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('assets/background/Bearings-Background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* Add semi-transparent overlay to improve readability */
+.fixed-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Add a semi-transparent white overlay to ensure readability */
+.featured-products::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+/* Ensure content stays above the overlay */
+.featured-products > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Update about-location section styles */
+.about-location {
+    padding: 3rem 2rem 5rem;
+    position: relative;
+    background-image: url('assets/background/Bearings-Background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Add a semi-transparent white overlay to ensure readability */
+.about-location::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+/* Ensure content stays above the overlay */
+.about-location > * {
+    position: relative;
+    z-index: 2;
+}
+
+
 
 
 
