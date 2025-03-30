@@ -28,29 +28,27 @@ body {
 
 /* Navigation */
 .navbar {
-    background-color: var(--midnight-blue);
+    background: var(--midnight-blue);
     padding: 1rem 2rem;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 82px;
-}
-
-.logo img {
-    height: 50px;
-    width: auto;
-    display: block;
-    margin: auto;
+    height: 80px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
 }
 
 .logo {
     display: flex;
     align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
 }
 
 .nav-links {
@@ -59,38 +57,36 @@ body {
     list-style: none;
 }
 
-.nav-links li a {
+.nav-links a {
     color: var(--white);
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0.5rem 1rem;
-    transition: all 0.3s ease;
+    padding: .5rem 1rem;
+    transition: .3s;
     position: relative;
 }
 
-.nav-links li a::after {
+.nav-links a::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--lemon-yellow);
-    transition: width 0.3s ease;
+    background: var(--lemon-yellow);
+    transition: width .3s;
 }
 
-.nav-links li a:hover {
+.nav-links a:hover {
     color: var(--lemon-yellow);
 }
 
-.nav-links li a:hover::after {
+.nav-links a:hover::after {
     width: 100%;
 }
 
-/* Responsive navigation */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -99,7 +95,7 @@ body {
         left: 0;
         right: 0;
         flex-direction: column;
-        background-color: var(--midnight-blue); /* Changed from rgba to solid color */
+        background: var(--midnight-blue);
         padding: 1rem 0;
         gap: 0;
     }
@@ -108,22 +104,22 @@ body {
         display: flex;
     }
 
-    .nav-links li {
+    .nav-links a {
         width: 100%;
         text-align: center;
     }
 
-    .nav-links li a {
+    .nav-links a {
         display: block;
         padding: 1rem 2rem;
     }
 
-    .nav-links li a::after {
+    .nav-links a::after {
         display: none;
     }
 
-    .nav-links li a:hover {
-        background-color: rgba(255, 244, 79, 0.1);
+    .nav-links a:hover {
+        background: rgba(255,244,79,.1);
     }
 }
 
@@ -136,7 +132,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 74px;
+    margin-top: 80px;
 }
 
 .slideshow {
@@ -1042,8 +1038,3 @@ footer {
     position: relative;
     z-index: 2;
 }
-
-
-
-
-
