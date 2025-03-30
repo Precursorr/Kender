@@ -30,3 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Change slide every 8 seconds
     setInterval(nextSlide, 8000);
+
+});
+
+
+
