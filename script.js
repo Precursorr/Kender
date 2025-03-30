@@ -31,7 +31,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Change slide every 8 seconds
     setInterval(nextSlide, 8000);
 
+    // Add smooth scrolling for the Home link in footer
+    const scrollTopLink = document.querySelector('.scroll-top');
+    
+    scrollTopLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
-
-
 
