@@ -545,40 +545,106 @@ footer {
 }
 
 .opening-hours {
-    flex: 0 0 30%; /* Increased from 28% */
+    flex: 0 0 30%;
     padding: 1.2rem;
     background-color: var(--gray);
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     align-self: center;
+    border: 2px solid var(--lemon-yellow);
+    position: relative;
+    transition: all 0.3s ease;
+    z-index: 1;
 }
 
-.opening-hours h2 {
-    font-size: 1.3rem; /* Reduced from 1.5rem */
-    margin-bottom: 1rem; /* Reduced from 1.5rem */
+/* Add hover effect only for desktop/PC screens */
+@media (min-width: 992px) {
+    .opening-hours:hover {
+        transform: scale(2);
+        z-index: 100; /* Ensure it appears above other elements */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+}
+
+/* Disable hover effect on mobile/tablet */
+@media (max-width: 991px) {
+    .opening-hours:hover {
+        transform: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Add a subtle glow effect */
+.opening-hours::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 12px;
+    background: var(--lemon-yellow);
+    opacity: 0.1;
+    z-index: -1;
+}
+
+/* Single, consolidated style for the header */
+.opening-hours-header {
+    background-color: var(--midnight-blue);
+    margin: -1.2rem -1.2rem 1rem -1.2rem;
+    padding: 1.5rem;
+    border-radius: 8px 8px 0 0;
     text-align: center;
-    color: var(--midnight-blue);
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid var(--lemon-yellow);
+}
+
+.opening-hours-header h2 {
+    color: var(--white);
+    font-size: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.opening-hours-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: var(--lemon-yellow);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .hours-list {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem; /* Reduced from 0.5rem */
+    gap: 0.4rem;
+    margin-top: 1rem;
 }
 
 .hours-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0.8rem; /* Reduced from 0.75rem 1rem */
+    padding: 0.5rem 0.6rem;
     background-color: var(--white);
     border-radius: 6px;
     color: var(--midnight-blue);
-    font-size: 0.9rem; /* Added to make text slightly smaller */
+    font-size: 0.8rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hours-item .day {
-    margin-right: 0.8rem; /* Reduced from 1rem */
+    margin-right: 0.6rem;
 }
 
 /* Responsive design */
@@ -734,17 +800,9 @@ footer {
     background-color: var(--white);
 }
 
-.about-location h2 {
-    display: none; /* Hide original heading */
-}
-
 .services-provided {
     padding: 3rem 2rem 5rem;
     background-color: var(--white);
-}
-
-.services-provided h2 {
-    display: none; /* Hide original heading */
 }
 
 /* Shared Grid Styles */
@@ -1047,5 +1105,6 @@ footer {
     position: relative;
     z-index: 2;
 }
+
 
 
