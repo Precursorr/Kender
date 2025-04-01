@@ -1008,17 +1008,26 @@ footer {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .services-provided {
-        padding: 3rem 1rem 5rem;
+        padding: 1rem 1rem 5rem; /* Reduced top padding from 2rem to 1rem */
+        margin-top: 20px; /* Reduced from 30px */
     }
 
     .services-provided h2 {
         font-size: 2rem;
+        margin-bottom: 0.5rem; /* Reduced from 1rem */
     }
 
     .services-list li {
         width: 100%;
         max-width: 400px;
         padding: 1rem;
+    }
+}
+
+/* Ensure consistency across breakpoints */
+@media (max-width: 991px) {
+    .services-provided {
+        margin-top: 20px; /* Reduced from 30px */
     }
 }
 
@@ -1486,6 +1495,10 @@ footer {
         inset: 0 0 -3px 0;
     }
 }
+
+
+
+
 
 
 
