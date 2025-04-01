@@ -296,7 +296,8 @@ body {
     justify-content: center;
     padding-top: 40px;
     margin-top: 80px;
-    margin-bottom: 0;
+    margin-bottom: -1px; /* Force overlap to prevent gap */
+    border-bottom: none;
 }
 
 .slideshow {
@@ -1061,6 +1062,8 @@ footer {
     background-color: var(--midnight-blue);
     padding: 0.2rem 0; /* Reduced by 30% from 0.9rem */
     margin: 0;
+    position: relative;
+    z-index: 3;
 }
 
 .section-divider h2 {
@@ -1072,12 +1075,20 @@ footer {
 
 /* Update existing section styles */
 .featured-products {
-    padding: 3rem 2rem 5rem;
     position: relative;
-    background-image: url('assets/background/Bearings-Background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    z-index: 2;
+    background-color: var(--white);
+    padding: 0 2rem 5rem; /* Removed top padding */
+    margin-top: 0;
+    border-top: none;
+}
+
+.featured-products h2 {
+    text-align: center;
+    margin-top: 0;
+    padding-top: 3rem; /* Move padding to h2 instead */
+    color: var(--midnight-blue);
+    font-size: 2.5rem;
 }
 
 /* Add a semi-transparent white overlay to ensure readability */
@@ -1099,12 +1110,9 @@ footer {
 }
 
 .catalogue-section {
-    padding: 3rem 2rem 5rem;
     position: relative;
-    background-image: url('assets/background/Teng-Tool-Background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    z-index: 2;
+    background-color: var(--white);
 }
 
 /* Add a semi-transparent white overlay to ensure readability */
@@ -1462,5 +1470,7 @@ footer {
         font-size: 1.53rem; /* Reduced by 15% from 1.8rem */
     }
 }
+
+
 
 
