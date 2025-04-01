@@ -172,7 +172,7 @@ body {
 
     .nav-links {
         position: absolute;
-        top: 80px;
+        top: 60px;
         left: 0;
         width: 100%;
         background: var(--midnight-blue);
@@ -188,9 +188,8 @@ body {
         height: 0;
         overflow: hidden;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        /* Add yellow borders */
+        margin-top: 0;
         border-top: 2px solid var(--lemon-yellow);
-        border-left: 2px solid var(--lemon-yellow);
     }
 
     .nav-links.active {
@@ -200,64 +199,17 @@ body {
         padding: 20px 0;
     }
 
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-        opacity: 0;
-        transform: translateY(-20px);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-    }
-
-    .nav-links.active li {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* Stagger the animation for each list item */
-    .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
-    .nav-links.active li:nth-child(2) { transition-delay: 0.2s; }
-    .nav-links.active li:nth-child(3) { transition-delay: 0.3s; }
-
-    .nav-links a {
-        padding: 15px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        font-size: 1.1rem;
-        opacity: 0;
-        transition: all 0.3s ease;
-        position: relative;
-        background: linear-gradient(to right, 
-            transparent 50%, 
-            rgba(255, 244, 79, 0.1) 50%
-        );
-        background-size: 200% 100%;
-        background-position: 0 0;
-    }
-
-    .nav-links a i {
-        width: 20px; /* Fixed width for consistent alignment */
-        text-align: center;
-        margin-right: 10px;
-    }
-
-    .nav-links.active a {
-        opacity: 1;
-    }
-
     /* Hover effect for menu items */
     .nav-links a:hover {
         background-position: -100% 0;
-        padding-left: 40px; /* Increased to accommodate icon */
+        padding-left: 40px;
     }
 
     /* Yellow dot indicator for hover */
     .nav-links a::before {
         content: '•';
         position: absolute;
-        left: 20px; /* Moved slightly right to make room for icon */
+        left: 20px;
         opacity: 0;
         color: var(--lemon-yellow);
         transition: all 0.3s ease;
@@ -267,7 +219,7 @@ body {
         opacity: 1;
     }
 
-    /* Additional yellow accent on the right side */
+    /* Yellow vertical bar on hover */
     .nav-links a::after {
         content: '';
         position: absolute;
@@ -282,6 +234,24 @@ body {
 
     .nav-links a:hover::after {
         height: 70%;
+    }
+
+    .nav-links a {
+        width: 100%;
+        display: block;
+        padding: 1rem;
+        position: relative;
+    }
+}
+
+/* Ensure navbar height matches on mobile */
+@media (max-width: 576px) {
+    .navbar {
+        height: 60px;
+    }
+
+    .nav-links {
+        top: 60px; /* Match navbar height */
     }
 }
 
@@ -1517,6 +1487,3 @@ footer {
         inset: 0 0 -3px 0;
     }
 }
-
-
-
