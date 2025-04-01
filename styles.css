@@ -1463,3 +1463,41 @@ footer {
     }
 }
 
+@media (max-width: 576px) {
+    .slideshow {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        margin-bottom: -2px;
+    }
+
+    .slide {
+        position: absolute;
+        inset: 0 0 -2px 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .slide::after {
+        content: '';
+        position: absolute;
+        inset: 0 0 -2px 0;
+        background: rgba(25, 25, 112, 0.5);
+    }
+}
+
+/* For very small devices */
+@media (max-width: 320px) {
+    .slideshow {
+        margin-bottom: -3px;
+    }
+    
+    .slide, .slide::after {
+        inset: 0 0 -3px 0;
+    }
+}
+
+
