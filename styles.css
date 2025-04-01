@@ -295,7 +295,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding-top: 40px;
-    margin-top: 80px; /* Match exactly with navbar height */
+    margin-top: 80px;
     margin-bottom: 0;
 }
 
@@ -1445,7 +1445,14 @@ footer {
     .hero {
         height: calc(100vh - 60px);
         min-height: 240px;
-        padding-top: 30px; /* Reduced for mobile */
+        padding-top: 20px;
+        margin-top: 60px;
+        top: -1px; /* This removes the tiny gap */
+    }
+
+    .hero-content {
+        padding-top: 0; /* Remove any extra padding */
     }
 }
+
 
