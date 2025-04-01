@@ -199,41 +199,9 @@ body {
         padding: 20px 0;
     }
 
-    /* Hover effect for menu items */
-    .nav-links a:hover {
-        background-position: -100% 0;
-        padding-left: 40px;
-    }
-
-    /* Yellow dot indicator for hover */
-    .nav-links a::before {
-        content: '•';
-        position: absolute;
-        left: 20px;
-        opacity: 0;
-        color: var(--lemon-yellow);
-        transition: all 0.3s ease;
-    }
-
-    .nav-links a:hover::before {
-        opacity: 1;
-    }
-
-    /* Yellow vertical bar on hover */
-    .nav-links a::after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 3px;
-        height: 0;
-        background: var(--lemon-yellow);
-        transition: height 0.3s ease;
-    }
-
-    .nav-links a:hover::after {
-        height: 70%;
+    .nav-links li {
+        width: 100%;
+        text-align: center;
     }
 
     .nav-links a {
@@ -241,6 +209,37 @@ body {
         display: block;
         padding: 1rem;
         position: relative;
+        color: var(--white);
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        transition: .3s;
+    }
+
+    /* Remove the previous hover effects */
+    .nav-links a::before {
+        display: none;
+    }
+
+    /* Keep only the underline effect from PC version */
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--lemon-yellow);
+        transition: width .3s;
+    }
+
+    .nav-links a:hover {
+        color: var(--lemon-yellow);
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
     }
 }
 
@@ -1487,3 +1486,7 @@ footer {
         inset: 0 0 -3px 0;
     }
 }
+
+
+
+
