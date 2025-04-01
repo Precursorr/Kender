@@ -1443,15 +1443,23 @@ footer {
     }
 
     .hero {
-        height: calc(100vh - 60px);
-        min-height: 240px;
+        height: calc(80vh - 60px); /* Reduced by 20% from 100vh */
+        min-height: 240px; /* Reduced by 20% from 300px */
+        max-height: 384px; /* Reduced by 20% from 480px */
         padding-top: 20px;
         margin-top: 60px;
-        top: -1px; /* This removes the tiny gap */
+        top: -1px;
     }
 
     .hero-content {
-        padding-top: 0; /* Remove any extra padding */
+        padding-top: 0;
+    }
+}
+
+/* Extra small devices (small phones) */
+@media (max-width: 320px) {
+    .hero h1 {
+        font-size: 1.53rem; /* Reduced by 15% from 1.8rem */
     }
 }
 
