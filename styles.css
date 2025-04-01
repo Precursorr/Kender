@@ -33,6 +33,7 @@ body {
     position: fixed;
     width: 100%;
     top: 0;
+    left: 0;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
@@ -287,13 +288,15 @@ body {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 48vh; /* Reduced by 40% from 80vh */
-    min-height: 300px; /* Reduced by 40% from 500px */
-    max-height: 480px; /* Reduced by 40% from 800px */
+    height: calc(100vh - 80px);
+    min-height: 300px;
+    max-height: 480px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    margin-top: 80px;
+    padding-top: 40px;
+    margin-top: 80px; /* Match exactly with navbar height */
+    margin-bottom: 0;
 }
 
 .slideshow {
@@ -329,7 +332,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
-    padding: 1.5rem;
+    padding: 1rem; /* Reduced padding */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -1434,23 +1437,15 @@ footer {
     z-index: 2;
 }
 
+@media (max-width: 576px) {
+    .navbar {
+        height: 60px;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .hero {
+        height: calc(100vh - 60px);
+        min-height: 240px;
+        padding-top: 30px; /* Reduced for mobile */
+    }
+}
 
