@@ -310,9 +310,7 @@ body {
     inset: 0;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: center/cover no-repeat;
 }
 
 .slide.active {
@@ -1454,6 +1452,26 @@ footer {
     .hero-content {
         padding-top: 0;
     }
+
+    .hero h1 { font-size: 1.6rem; }
+    .hero-content p { font-size: 0.9rem; }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .slideshow {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        margin-bottom: -2px;
+    }
+
+    .slide, .slide::after {
+        position: absolute;
+        inset: 0 0 -2px 0;
+    }
 }
 
 /* Extra small devices (small phones) */
@@ -1499,5 +1517,6 @@ footer {
         inset: 0 0 -3px 0;
     }
 }
+
 
 

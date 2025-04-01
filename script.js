@@ -1,77 +1,75 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    let isAnimating = false;
+document.addEventListener('DOMContentLoaded', () => {
+    // Cache DOM elements
+    const elements = {
+        hamburger: document.querySelector('.hamburger'),
+        navLinks: document.querySelector('.nav-links'),
+        logo: document.getElementById('backToTop'),
+        slides: document.querySelectorAll('.slide'),
+        scrollTopLink: document.querySelector('.scroll-top')
+    };
 
-    hamburger.addEventListener('click', function() {
+    let isAnimating = false;
+    let currentSlide = 0;
+
+    // Debounce function for performance
+    const debounce = (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    };
+
+    // Combine event handlers
+    const toggleMenu = () => {
         if (isAnimating) return;
         
         isAnimating = true;
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
+        elements.hamburger.classList.toggle('active');
+        elements.navLinks.classList.toggle('active');
 
-        // Wait for animation to complete
-        setTimeout(() => {
-            isAnimating = false;
-        }, 300);
+        setTimeout(() => isAnimating = false, 300);
+    };
+
+    // Smooth scroll function
+    const smoothScroll = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    // Slideshow function
+    const nextSlide = () => {
+        elements.slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % elements.slides.length;
+        elements.slides[currentSlide].classList.add('active');
+    };
+
+    // Event listeners
+    elements.hamburger.addEventListener('click', toggleMenu);
+    elements.logo.addEventListener('click', smoothScroll);
+    elements.scrollTopLink?.addEventListener('click', (e) => {
+        e.preventDefault();
+        smoothScroll();
     });
 
     // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!isAnimating && !hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
+    document.addEventListener('click', debounce((e) => {
+        if (!isAnimating && 
+            !elements.hamburger.contains(e.target) && 
+            !elements.navLinks.contains(e.target)) {
+            elements.hamburger.classList.remove('active');
+            elements.navLinks.classList.remove('active');
         }
-    });
+    }, 100));
 
-    // Close menu when clicking a link
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (!isAnimating) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
-    });
-
-    const logo = document.getElementById('backToTop');
-    
-    logo.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // New slideshow code
-    const slides = document.querySelectorAll('.slide');
-    let currentSlide = 0;
-
-    // Show first slide initially
-    slides[0].classList.add('active');
-
-    function nextSlide() {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
-    }
-
-    // Change slide every 8 seconds
+    // Initialize slideshow
+    elements.slides[0].classList.add('active');
     setInterval(nextSlide, 8000);
-
-    // Add smooth scrolling for the Home link in footer
-    const scrollTopLink = document.querySelector('.scroll-top');
-    
-    scrollTopLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
 });
-
-
-
-
 
