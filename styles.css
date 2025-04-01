@@ -503,6 +503,27 @@ body {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         justify-content: center;
     }
+
+    .product-item {
+        width: 100%;
+        max-width: 300px;
+        padding: 1.5rem; /* Reduced padding since we're showing less content */
+    }
+
+    .product-item p {
+        display: none; /* Hide paragraph text on mobile */
+    }
+
+    .product-item h3 {
+        margin-bottom: 0; /* Remove bottom margin since there's no paragraph */
+        font-size: 1.2rem; /* Optionally adjust heading size for mobile */
+    }
+
+    .product-link {
+        width: 100%;
+        max-width: 300px;
+        flex: none;
+    }
 }
 
 /* Virtual Tour */
@@ -736,6 +757,24 @@ footer {
     padding: 1rem;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Tablets and mobile devices */
+@media (max-width: 991px) {
+    .about-content p {
+        font-size: 0.9rem; /* Reduced from 1.1rem */
+        line-height: 1.5; /* Reduced from 1.8 */
+        padding: 0.8rem; /* Slightly reduced padding */
+    }
+}
+
+/* Additional adjustments for mobile only if needed */
+@media (max-width: 576px) {
+    .about-content p {
+        font-size: 0.85rem; /* Even smaller for mobile */
+        line-height: 1.4; /* Even tighter line spacing for mobile */
+        padding: 0.6rem;
+    }
 }
 
 .location-hours-container {
@@ -1366,6 +1405,8 @@ footer {
     position: relative;
     z-index: 2;
 }
+
+
 
 
 
