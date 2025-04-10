@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks: document.querySelector('.nav-links'),
         logo: document.getElementById('backToTop'),
         homeLink: document.getElementById('homeLink'),
+        productsLink: document.getElementById('productsLink'),
+        cataloguesLink: document.getElementById('cataloguesLink'),
+        productsDivider: document.getElementById('products-divider'),
+        cataloguesDivider: document.getElementById('catalogues-divider'),
         slides: document.querySelectorAll('.slide'),
         scrollTopLink: document.querySelector('.scroll-top'),
         // Virtual Tour elements
@@ -42,12 +46,34 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => isAnimating = false, 300);
     };
 
-    // Smooth scroll function
+    // Smooth scroll to top function
     const smoothScroll = () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
+    };
+
+    // Smooth scroll to element function
+    const smoothScrollToElement = (element, extraOffset = 0) => {
+        if (!element) return;
+
+        // Get the actual navbar height dynamically
+        const navbar = document.querySelector('.navbar');
+        const navbarHeight = navbar ? navbar.offsetHeight : 80; // Default to 80px if not found
+
+        // Small delay to ensure accurate calculations
+        setTimeout(() => {
+            // Get the element's position
+            const rect = element.getBoundingClientRect();
+            const absoluteTop = window.pageYOffset + rect.top;
+
+            // Scroll to the element's position minus the navbar height
+            window.scrollTo({
+                top: absoluteTop - navbarHeight + extraOffset,
+                behavior: 'smooth'
+            });
+        }, 10);
     };
 
     // Slideshow function
@@ -60,6 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listeners
     elements.hamburger.addEventListener('click', toggleMenu);
     elements.logo.addEventListener('click', smoothScroll);
+
+    // Home link event listener
     elements.homeLink.addEventListener('click', (e) => {
         e.preventDefault();
         smoothScroll();
@@ -68,6 +96,28 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleMenu();
         }
     });
+
+    // Products link event listener
+    elements.productsLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        smoothScrollToElement(elements.productsDivider);
+        // Close mobile menu if open
+        if (elements.navLinks.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+
+    // Catalogues link event listener
+    elements.cataloguesLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Add a small positive offset to ensure it sits flush with the navbar
+        smoothScrollToElement(elements.cataloguesDivider, 1);
+        // Close mobile menu if open
+        if (elements.navLinks.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+
     elements.scrollTopLink?.addEventListener('click', (e) => {
         e.preventDefault();
         smoothScroll();
