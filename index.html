@@ -47,7 +47,7 @@
                 <p>Your one-stop destination for comprehensive engineering solutions. We transform challenges into opportunities with innovative and customized solutions.</p>
                 <div class="hero-buttons">
                     <a href="#catalogues" class="primary-button">View Catalogues</a>
-                    <a href="#tour" class="secondary-button">Take Virtual Tour</a>
+                    <button id="tourButton" class="secondary-button">Take Virtual Tour</button>
                 </div>
             </div>
         </section>
@@ -80,7 +80,7 @@
                     </div>
                 </a>
             </div>
-        </section> 
+        </section>
          <!-- End of featured-products section -->
 
         <!-- Featured Catalogues Section -->
@@ -121,11 +121,11 @@
                 </div>
                 <div class="location-hours-container">
                     <div class="map-container">
-                        <iframe 
+                        <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.4370835449735!2d-7.348661684159903!3d53.52683098002037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485dc01e7c876b93%3A0x66a415b8519930ea!2sGJ8Q%2BC8%20Mullingar%2C%20Commons%2C%20County%20Westmeath!5e0!3m2!1sen!2sie!4v1679923843811!5m2!1sen!2sie"
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
                             loading="lazy"
                             fetchpriority="high"
                             referrerpolicy="no-referrer-when-downgrade"
@@ -223,6 +223,27 @@
             <p>&copy; 2023 Kender Bearings. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Virtual Tour Overlay -->
+    <div id="tourOverlay" class="tour-overlay">
+        <div class="tour-content">
+            <button id="tourClose" class="tour-close">&times;</button>
+            <div id="tourMainImage" class="tour-main-image">
+                <div id="tourContent" class="tour-content-container" style="display: none;">
+                    <div class="placeholder-text">Virtual Tour Image 1</div>
+                </div>
+                <iframe id="streetViewFrame" class="street-view-frame" allowfullscreen></iframe>
+            </div>
+            <div class="tour-thumbnails">
+                <div class="tour-thumbnail active" data-index="0">
+                    <div class="placeholder-text">1</div>
+                </div>
+                <div class="tour-thumbnail" data-index="1">
+                    <div class="placeholder-text">2</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

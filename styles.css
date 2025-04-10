@@ -361,13 +361,13 @@ body {
     border: 2px solid var(--white);
 }
 
-.primary-button:hover, 
+.primary-button:hover,
 .secondary-button:hover {
     transform: translateY(-3px);
 }
 
 /* Shared Grid Styles */
-.product-grid, 
+.product-grid,
 .catalogue-grid {
     display: flex;
     flex-wrap: wrap;
@@ -452,23 +452,23 @@ body {
     .hero h1 {
         font-size: 2rem;
     }
-    
+
     .hero {
         min-height: 50vh;
     }
-    
+
     .product-grid,
     .catalogue-grid {
         gap: 1.5rem;
     }
-    
+
     .product-item,
     .product-link {
         width: 100%;
         max-width: 300px;
         flex: none;
     }
-    
+
     .catalogue-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         justify-content: center;
@@ -513,10 +513,243 @@ body {
     text-decoration: none;
     border-radius: 30px;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .tour-button:hover {
     transform: translateY(-3px);
+}
+
+/* Virtual Tour Overlay */
+.tour-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.tour-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tour-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tour-main-image {
+    width: 100%;
+    height: 60vh;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.tour-content-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.street-view-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.tour-main-image .placeholder-text {
+    transition: opacity 0.3s ease;
+}
+
+.tour-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased gap for 2 thumbnails */
+    margin-top: 15px;
+    padding: 12px 30px; /* Added more horizontal padding */
+    background-color: rgba(25, 25, 112, 0.4); /* Midnight blue with transparency */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tour-thumbnail {
+    width: 80px;
+    height: 60px;
+    border-radius: 5px;
+    background-color: rgba(25, 25, 112, 0.7); /* Darker midnight blue */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.tour-thumbnail .placeholder-text {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Special styling for the 360 tour thumbnail */
+.tour-thumbnail[data-index="0"]::before {
+    content: '360°';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: var(--lemon-yellow);
+    color: var(--midnight-blue);
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 4px;
+    z-index: 2;
+}
+
+.tour-thumbnail:hover {
+    border-color: var(--lemon-yellow);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tour-thumbnail.active {
+    transform: scale(1.2);
+    border: 2px solid var(--lemon-yellow);
+    box-shadow: 0 0 15px rgba(255, 244, 79, 0.7);
+    z-index: 10;
+}
+
+.tour-thumbnail::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+}
+
+.placeholder-text {
+    color: var(--midnight-blue);
+    font-weight: bold;
+    text-align: center;
+}
+
+.tour-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.tour-close:hover {
+    transform: scale(1.1);
+    color: var(--lemon-yellow);
+}
+
+/* Responsive adjustments for tour overlay */
+@media (max-width: 992px) { /* Hide close button on screens smaller than laptops */
+    .tour-close {
+        display: none;
+    }
+
+    /* Add a hint for mobile users */
+    .tour-overlay::before {
+        content: 'Tap outside image to close';
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: var(--white);
+        font-size: 14px;
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 768px) {
+    .tour-content {
+        width: 95%;
+    }
+
+    .tour-main-image {
+        height: 50vh;
+    }
+
+    .tour-thumbnail {
+        width: 60px;
+        height: 45px;
+    }
+
+    .tour-thumbnail .placeholder-text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .tour-main-image {
+        height: 40vh;
+    }
+
+    .tour-thumbnails {
+        gap: 20px;
+        padding: 8px 20px;
+    }
+
+    .tour-thumbnail {
+        width: 50px;
+        height: 40px;
+    }
+
+    .tour-thumbnail .placeholder-text {
+        font-size: 12px;
+    }
+
+    .tour-thumbnail[data-index="0"]::before {
+        font-size: 8px;
+        top: 3px;
+        right: 3px;
+    }
 }
 
 /* Contact Section */
@@ -653,7 +886,7 @@ footer {
     .hero h1 {
         font-size: 2rem; /* Reduced from 2.5rem */
     }
-    
+
     .hero {
         min-height: 50vh; /* Even shorter on mobile */
     }
@@ -900,7 +1133,7 @@ footer {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .map-container {
         width: 100%;
         height: 350px;
@@ -1008,26 +1241,32 @@ footer {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .services-provided {
-        padding: 1rem 1rem 5rem; /* Reduced top padding from 2rem to 1rem */
-        margin-top: 20px; /* Reduced from 30px */
+        padding: 1rem 1rem 2rem; /* Reduced bottom padding from 5rem to 2rem */
+        margin-top: 10px;
     }
 
     .services-provided h2 {
         font-size: 2rem;
-        margin-bottom: 0.5rem; /* Reduced from 1rem */
+        margin-bottom: 0.5rem;
     }
 
     .services-list li {
         width: 100%;
         max-width: 400px;
         padding: 1rem;
+        margin-bottom: 1rem; /* Add this to ensure consistent spacing between list items */
+    }
+
+    /* Add this to remove any extra bottom margin from the last list item */
+    .services-list li:last-child {
+        margin-bottom: 0;
     }
 }
 
 /* Ensure consistency across breakpoints */
 @media (max-width: 991px) {
     .services-provided {
-        margin-top: 20px; /* Reduced from 30px */
+        margin-top: 20px;
     }
 }
 
@@ -1177,12 +1416,12 @@ footer {
     .catalogue-grid {
         gap: 1.5rem;
     }
-    
+
     .product-item {
         width: 100%;
         max-width: 300px;
     }
-    
+
     .product-link {
         width: 100%;
         max-width: 300px;
@@ -1195,12 +1434,12 @@ footer {
     .hero h1 {
         font-size: 1.8rem;
     }
-    
+
     .hero-buttons {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .footer-content {
         gap: 2rem;
     }
@@ -1211,7 +1450,7 @@ footer {
     .hero h1 {
         font-size: 2rem;
     }
-    
+
     .product-grid,
     .catalogue-grid {
         gap: 1.5rem;
@@ -1224,7 +1463,7 @@ footer {
     .catalogue-grid {
         gap: 1.8rem;
     }
-    
+
     .product-item,
     .product-link {
         width: 250px;
@@ -1433,7 +1672,7 @@ footer {
 
     .hero h1 { font-size: 1.6rem; }
     .hero-content p { font-size: 0.9rem; }
-    
+
     .hero-buttons {
         flex-direction: column;
         gap: 0.8rem;
@@ -1490,11 +1729,13 @@ footer {
     .slideshow {
         margin-bottom: -3px;
     }
-    
+
     .slide, .slide::after {
         inset: 0 0 -3px 0;
     }
 }
+
+
 
 
 
