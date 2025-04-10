@@ -943,10 +943,11 @@ footer {
 
 .about-content {
     text-align: center;
-    max-width: 800px;
-    margin-bottom: 3rem;
+    max-width: 1200px; /* Match the max-width of product grids */
+    margin: 0 auto 3rem;
     position: relative;
     z-index: 2;
+    padding: 0 1.5rem; /* Add padding to match product grids */
 }
 
 .about-content p {
@@ -1185,6 +1186,7 @@ footer {
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
+    padding: 0 1.5rem; /* Add padding to match product grids */
 }
 
 .services-provided h2 {
@@ -1208,7 +1210,7 @@ footer {
     gap: 0.8rem; /* Reduced from 1.5rem */
     padding: 0;
     justify-content: center;
-    max-width: 800px;
+    max-width: 1200px; /* Match the max-width of product grids */
     margin: 0 auto;
     text-align: center;
 }
@@ -1491,15 +1493,54 @@ footer {
 
 /* Medium devices (tablets, small laptops) */
 @media (min-width: 768px) and (max-width: 991px) {
+    /* Shared grid styles */
     .product-grid,
-    .catalogue-grid {
-        gap: 1.8rem;
+    .catalogue-grid,
+    .about-content,
+    .services-provided .container {
+        gap: 0.8rem;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        max-width: 900px;
     }
 
-    .product-item,
+    /* Featured Products specific styles */
     .product-link {
-        width: 250px;
-        flex: 0 0 250px;
+        width: 32%;
+        flex: 0 0 32%;
+        max-width: 32%;
+        margin: 0;
+    }
+
+    /* Both sections */
+    .product-item {
+        width: 100%; /* Take full width of parent */
+        flex: 1;
+        padding: 1rem;
+        margin: 0;
+    }
+
+    /* Featured Catalogues specific styles */
+    .catalogue-grid > .product-item {
+        width: 32%;
+        flex: 0 0 32%;
+        max-width: 32%;
+    }
+
+    /* Typography adjustments */
+    .product-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .product-item p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+
+    /* Image adjustments */
+    .product-item .product-image {
+        height: 160px;
     }
 }
 
@@ -1508,12 +1549,154 @@ footer {
     .container {
         max-width: 960px;
     }
+
+    /* Shared grid styles */
+    .product-grid,
+    .catalogue-grid,
+    .about-content,
+    .services-provided .container {
+        gap: 1rem;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        max-width: 1100px;
+    }
+
+    /* Featured Products specific styles */
+    .product-link {
+        width: 31%;
+        flex: 0 0 31%;
+        max-width: 31%;
+        margin: 0;
+    }
+
+    /* Both sections */
+    .product-item {
+        width: 100%; /* Take full width of parent */
+        flex: 1;
+        padding: 1.5rem;
+        margin: 0;
+    }
+
+    /* Featured Catalogues specific styles */
+    .catalogue-grid > .product-item {
+        width: 31%;
+        flex: 0 0 31%;
+        max-width: 31%;
+    }
+
+    /* Typography adjustments */
+    .product-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .product-item p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    /* Image adjustments */
+    .product-item .product-image {
+        height: 180px;
+    }
+}
+
+/* Specific adjustment for 1024px screens */
+@media (min-width: 992px) and (max-width: 1024px) {
+    /* Shared grid styles */
+    .product-grid,
+    .catalogue-grid {
+        gap: 0.8rem;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+        max-width: 1000px;
+    }
+
+    /* Featured Products specific styles */
+    .product-link {
+        width: 32%;
+        flex: 0 0 32%;
+        max-width: 32%;
+        margin: 0;
+    }
+
+    /* Both sections */
+    .product-item {
+        width: 100%; /* Take full width of parent */
+        flex: 1;
+        padding: 1.2rem;
+        margin: 0;
+    }
+
+    /* Featured Catalogues specific styles */
+    .catalogue-grid > .product-item {
+        width: 32%;
+        flex: 0 0 32%;
+        max-width: 32%;
+    }
+
+    /* Typography adjustments */
+    .product-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .product-item p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    /* Image adjustments */
+    .product-item .product-image {
+        height: 180px;
+    }
 }
 
 /* Extra large devices */
-@media (min-width: 1200px) {
+@media (min-width: 1200px) and (max-width: 1440px) {
     .container {
         max-width: 1140px;
+    }
+
+    /* Shared grid styles */
+    .product-grid,
+    .catalogue-grid,
+    .about-content,
+    .services-provided .container {
+        gap: 2rem;
+        justify-content: space-between;
+        padding: 0 2rem;
+        max-width: 1300px;
+    }
+
+    /* Featured Products specific styles */
+    .product-link {
+        width: 30%;
+        flex: 0 0 30%;
+        max-width: 30%;
+        margin: 0;
+    }
+
+    /* Both sections */
+    .product-item {
+        width: 100%; /* Take full width of parent */
+        flex: 1;
+        padding: 2rem;
+        margin: 0;
+    }
+
+    /* Featured Catalogues specific styles */
+    .catalogue-grid > .product-item {
+        width: 30%;
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
+}
+
+/* Very large devices */
+@media (min-width: 1441px) {
+    .container {
+        max-width: 1320px;
     }
 }
 
