@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger: document.querySelector('.hamburger'),
         navLinks: document.querySelector('.nav-links'),
         logo: document.getElementById('backToTop'),
+        homeLink: document.getElementById('homeLink'),
         slides: document.querySelectorAll('.slide'),
         scrollTopLink: document.querySelector('.scroll-top'),
         // Virtual Tour elements
@@ -59,6 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event listeners
     elements.hamburger.addEventListener('click', toggleMenu);
     elements.logo.addEventListener('click', smoothScroll);
+    elements.homeLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        smoothScroll();
+        // Close mobile menu if open
+        if (elements.navLinks.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
     elements.scrollTopLink?.addEventListener('click', (e) => {
         e.preventDefault();
         smoothScroll();
