@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         homeLink: document.getElementById('homeLink'),
         productsLink: document.getElementById('productsLink'),
         cataloguesLink: document.getElementById('cataloguesLink'),
+        heroCataloguesButton: document.getElementById('heroCataloguesButton'),
         productsDivider: document.getElementById('products-divider'),
         cataloguesDivider: document.getElementById('catalogues-divider'),
         slides: document.querySelectorAll('.slide'),
@@ -121,6 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.scrollTopLink?.addEventListener('click', (e) => {
         e.preventDefault();
         smoothScroll();
+    });
+
+    // Hero Catalogues button event listener
+    elements.heroCataloguesButton.addEventListener('click', () => {
+        // Use the same behavior as the header Catalogues link
+        smoothScrollToElement(elements.cataloguesDivider, 1);
     });
 
     // Close menu when clicking outside

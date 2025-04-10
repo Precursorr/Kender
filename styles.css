@@ -252,6 +252,12 @@ body {
     .nav-links {
         top: 60px; /* Match navbar height */
     }
+
+    .logo img {
+        height: 65px; /* Adjusted for mobile */
+        margin-top: -8px;
+        margin-bottom: -8px;
+    }
 }
 
 /* Hero Section */
@@ -1491,6 +1497,16 @@ footer {
     }
 }
 
+/* Logo size for screens above 768px */
+@media (min-width: 769px) {
+    .logo img {
+        height: 85px; /* Increased by 70% from 50px */
+        width: auto;
+        margin-top: -10px; /* Adjust position to fit within navbar */
+        margin-bottom: -10px; /* Adjust position to fit within navbar */
+    }
+}
+
 /* Medium devices (tablets, small laptops) */
 @media (min-width: 768px) and (max-width: 991px) {
     /* Shared grid styles */
@@ -1548,6 +1564,15 @@ footer {
 @media (min-width: 992px) and (max-width: 1199px) {
     .container {
         max-width: 960px;
+    }
+
+    .hero {
+        align-items: center; /* Center content vertically */
+        padding-top: 0; /* Remove top padding */
+    }
+
+    .hero-content {
+        padding-top: 0;
     }
 
     /* Shared grid styles */
@@ -1658,6 +1683,15 @@ footer {
         max-width: 1140px;
     }
 
+    .hero {
+        align-items: center; /* Center content vertically */
+        padding-top: 0; /* Remove top padding */
+    }
+
+    .hero-content {
+        padding-top: 0;
+    }
+
     /* Shared grid styles */
     .product-grid,
     .catalogue-grid,
@@ -1698,6 +1732,15 @@ footer {
     .container {
         max-width: 1320px;
     }
+
+    .hero {
+        align-items: center; /* Center content vertically */
+        padding-top: 0; /* Remove top padding */
+    }
+
+    .hero-content {
+        padding-top: 0;
+    }
 }
 
 /* Responsive adjustments */
@@ -1736,10 +1779,16 @@ footer {
 @media (min-width: 768px) and (max-width: 991px) {
     .hero {
         height: 45vh; /* Reduced by 40% from 75vh */
+        align-items: center; /* Center content vertically */
+        padding-top: 0; /* Remove top padding */
     }
 
     .hero h1 {
         font-size: 2.2rem;
+    }
+
+    .hero-content {
+        padding-top: 0;
     }
 }
 
