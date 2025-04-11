@@ -17,7 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tourOverlay: document.getElementById('tourOverlay'),
         tourClose: document.getElementById('tourClose'),
         tourMainImage: document.getElementById('tourMainImage'),
-        tourThumbnails: document.querySelectorAll('.tour-thumbnail')
+        tourThumbnails: document.querySelectorAll('.tour-thumbnail'),
+        // Product items for animation
+        productItems: document.querySelectorAll('.product-item'),
+        sectionDividers: document.querySelectorAll('.section-divider')
     };
 
     let isAnimating = false;
@@ -320,5 +323,36 @@ document.addEventListener('DOMContentLoaded', () => {
             nextImage();
         }
     };
+
+    // Scroll animation for elements
+    const animateOnScroll = () => {
+        // Get all elements that need to be animated
+        const animatedElements = document.querySelectorAll('.product-item, .services-list li');
+
+        animatedElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+            const windowHeight = window.innerHeight;
+
+            // Check if element is in viewport
+            if (elementTop < windowHeight - 100 && elementBottom > 0) {
+                // Add a staggered delay based on the element's position in its container
+                const index = Array.from(element.parentNode.children).indexOf(element);
+                const delay = index * 100; // 100ms delay between each element
+
+                setTimeout(() => {
+                    element.classList.add('animate-in');
+                }, delay);
+            }
+        });
+    };
+
+    // Add scroll event listener for animations
+    window.addEventListener('scroll', debounce(animateOnScroll, 50));
+
+    // Initial check for elements in viewport
+    animateOnScroll();
+
+    // Section dividers no longer have parallax effect as requested by the user
 });
 
