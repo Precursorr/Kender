@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kender Engineering Solutions - Your one-stop destination for comprehensive engineering solutions">
+    <title>Kender Engineering Solutions</title>
+    <!-- Preload critical assets -->
+    <link rel="preload" href="assets/Logo/Kender-Logo.png" as="image">
+    <link rel="preload" href="assets/hero/Air-Products-Hero.jpg" as="image">
+    <!-- Preconnect to Google Maps -->
+    <link rel="preconnect" href="https://www.google.com">
+    <link rel="preconnect" href="https://maps.gstatic.com">
+    <link rel="preconnect" href="https://maps.googleapis.com">
+    <!-- Defer non-critical CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Use srcset for responsive images -->
+            <div class="logo" id="backToTop">
+                <img src="assets/Logo/Kender-Logo.png" alt="Kender Bearings Logo" width="150" height="60" loading="eager">
+            </div>
+            <button class="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#" id="homeLink"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" id="productsLink"><i class="fas fa-tools"></i> Products</a></li>
+                <li><a href="#" id="cataloguesLink"><i class="fas fa-book"></i> Catalogues</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+            <div class="slideshow">
+                <div class="slide" style="background-image: url('assets/hero/Air-Products-Hero.jpg')"></div>
+                <div class="slide" style="background-image: url('assets/hero/Hobby-Weld-Hero.jpg')"></div>
+                <div class="slide" style="background-image: url('assets/hero/Teng-Tool-Tool-Box-Hero.jpg')"></div>
+                <div class="slide" style="background-image: url('assets/hero/Welding-Equipment-Hero.jpg')"></div>
+                <div class="slide" style="background-image: url('assets/hero/Teng-Tool-Tools-Hero.jpg')"></div>
+            </div>
+            <div class="hero-content">
+                <h1>Engineering Solutions for Every Need</h1>
+                <p>Your one-stop destination for comprehensive engineering solutions. We transform challenges into opportunities with innovative and customized solutions.</p>
+                <div class="hero-buttons">
+                    <button id="heroCataloguesButton" class="primary-button">View Catalogues</button>
+                    <button id="tourButton" class="secondary-button">Take Virtual Tour</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <div id="products-divider" class="section-divider">
+            <h2>Featured Products</h2>
+        </div>
+        <section id="products" class="featured-products">
+            <div class="product-grid">
+                <a href="#hobby-weld" class="product-link">
+                    <div class="product-item">
+                        <div class="product-image" style="background-image: url('assets/featured/Hobby-Weld-Product-Logo.jpg')"></div>
+                        <h3>Hobby Weld</h3>
+                        <p>Professional welding equipment for hobbyists and professionals</p>
+                    </div>
+                </a>
+                <a href="#teng-tools" class="product-link">
+                    <div class="product-item">
+                        <div class="product-image" style="background-image: url('assets/featured/Teng-Tool-Featured-Products.jpg')"></div>
+                        <h3>Teng Tools</h3>
+                        <p>High-quality hand tools and storage solutions</p>
+                    </div>
+                </a>
+                <a href="#sealey" class="product-link">
+                    <div class="product-item">
+                        <div class="product-image" style="background-image: url('assets/featured/Sealey-Product-Logo.jpg')"></div>
+                        <h3>Sealey</h3>
+                        <p>Professional workshop equipment and tools</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+         <!-- End of featured-products section -->
+
+        <!-- Featured Catalogues Section -->
+        <div id="catalogues-divider" class="section-divider">
+            <h2>Featured Catalogues</h2>
+        </div>
+        <section id="catalogues" class="catalogue-section">
+            <div class="catalogue-grid">
+                <div class="product-item">
+                    <div class="product-image" style="background-image: url('assets/catalogue/Air-Products-Logo-Catalogue.jpg')"></div>
+                    <h3>Air Products</h3>
+                    <p>Welding and cutting solutions</p>
+                </div>
+                <div class="product-item">
+                    <div class="product-image" style="background-image: url('assets/catalogue/Jeffersons-Logo-Catalogue.jpg')"></div>
+                    <h3>Jeffersons</h3>
+                    <p>Industrial equipment and supplies</p>
+                </div>
+                <div class="product-item">
+                    <div class="product-image" style="background-image: url('assets/catalogue/Air-Products-Logo-Catalogue.jpg')"></div>
+                    <h3>Air Products Welder's Handbook</h3>
+                    <p>Professional welding guides and specifications</p>
+                </div>
+            </div>
+            <div class="view-more">
+                <a href="catalogue.html" class="see-more-button">Browse All Catalogues</a>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <div class="section-divider">
+            <h2>About Us</h2>
+        </div>
+        <section class="about-location">
+            <div class="container">
+                <div class="about-content">
+                    <p>Here at Kender Bearings we provide all your company needs in regards to industrial & transmission components, tools, engineering supplies, and general bearings. We are competitive on price and use our 25 years of experience to advise you on the best equipment decisions for you or your company.</p>
+                </div>
+                <div class="location-hours-container">
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.4370835449735!2d-7.348661684159903!3d53.52683098002037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485dc01e7c876b93%3A0x66a415b8519930ea!2sGJ8Q%2BC8%20Mullingar%2C%20Commons%2C%20County%20Westmeath!5e0!3m2!1sen!2sie!4v1679923843811!5m2!1sen!2sie"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            loading="lazy"
+                            fetchpriority="high"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Kender Engineering Solutions Location Map">
+                        </iframe>
+                    </div>
+                    <section class="opening-hours">
+                        <div class="opening-hours-header">
+                            <h2>Opening Hours</h2>
+                        </div>
+                        <div class="hours-list">
+                            <div class="hours-item">
+                                <span class="day">Monday</span>
+                                <span class="time">08:30 - 17:30</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Tuesday</span>
+                                <span class="time">08:30 - 17:30</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Wednesday</span>
+                                <span class="time">08:30 - 17:30</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Thursday</span>
+                                <span class="time">08:30 - 17:30</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Friday</span>
+                                <span class="time">08:30 - 17:30</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Saturday</span>
+                                <span class="time">09:00 - 12:00</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Provide Section -->
+        <div class="section-divider">
+            <h2>What We Provide</h2>
+        </div>
+        <section class="services-provided">
+            <div class="container">
+                <div class="services-list">
+                    <ul>
+                        <li>Belts, Bearings, Oil Seals, Chains</li>
+                        <li>Hand Tools & Power Tools</li>
+                        <li>Compressors</li>
+                        <li>Abrasives</li>
+                        <li>Metal Working Equipment</li>
+                        <li>Industrial Lubricants</li>
+                        <li>Nuts and Bolts</li>
+                        <li>Mig Welders</li>
+                        <li>Tig Welders</li>
+                        <li>Stick Welders</li>
+                        <li>Mobile Welders & Generators</li>
+                        <li>Plasma Cutters</li>
+                        <li>Spot Welders</li>
+                        <li>Industrial Gases</li>
+                        <li class="more-item">& More...</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#" class="scroll-top">Home</a></li>
+                    <li><a href="catalogue.html">Catalogues</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p class="contact-info">
+                    <i class="fas fa-envelope"></i> <a href="mailto:info@kenderbt.ie">info@kenderbt.ie</a><br>
+                    <i class="fas fa-phone"></i> <a href="tel:0449341325">(044) 934 1325</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Kender Bearings. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Virtual Tour Overlay -->
+    <div id="tourOverlay" class="tour-overlay">
+        <div class="tour-content">
+            <button id="tourClose" class="tour-close">&times;</button>
+            <div id="tourMainImage" class="tour-main-image">
+                <div id="tourContent" class="tour-content-container" style="display: none;">
+                    <div class="placeholder-text">Virtual Tour Image 1</div>
+                </div>
+                <iframe id="streetViewFrame" class="street-view-frame" allowfullscreen></iframe>
+            </div>
+            <div class="tour-thumbnails">
+                <div class="tour-thumbnail active" data-index="0">
+                    <div class="placeholder-text">1</div>
+                </div>
+                <div class="tour-thumbnail" data-index="1">
+                    <div class="placeholder-text">2</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
