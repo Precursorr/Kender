@@ -25,7 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
         hobbyWeldLink: document.getElementById('hobbyWeldLink'),
         hobbyWeldPopup: document.getElementById('hobbyWeldPopup'),
         cancelRedirect: document.getElementById('cancelRedirect'),
-        proceedRedirect: document.getElementById('proceedRedirect')
+        proceedRedirect: document.getElementById('proceedRedirect'),
+        // Clickable product items
+        airProductsHandbook: document.getElementById('airProductsHandbook'),
+        airProductsWebsite: document.getElementById('airProductsWebsite'),
+        tengToolsLink: document.getElementById('tengToolsLink'),
+        sealeyLink: document.getElementById('sealeyLink')
     };
 
     let isAnimating = false;
@@ -398,4 +403,28 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = ''; // Restore scrolling
         }
     });
+
+    // Air Products Handbook click handler
+    elements.airProductsHandbook.addEventListener('click', () => {
+        window.open('https://www.sjandrew.com/downloads/air-products-hand-book.pdf', '_blank');
+    });
+
+    // Teng Tools click handler
+    elements.tengToolsLink.addEventListener('click', () => {
+        window.open('https://www.tengtools.com/storage/D7A8ABB8B64C07A8D0653A340F403E35BA30DF5C57D2045DC311C210E594C47C/c212cda624ba437caa31c76e4909e1ae/pdf/media/faae8a6606c3466e9e79b180e50a1f59/tengtools_catalogue_2024_EUR_en-GB.pdf', '_blank');
+    });
+
+    // Sealey click handler
+    elements.sealeyLink.addEventListener('click', () => {
+        window.open('https://edition.pagesuite.com/html5/reader/production/default.aspx?pubname=&pubid=65cb5710-776c-49dc-b450-5380c7ed7df7', '_blank');
+    });
+
+    // Air Products website click handler
+    elements.airProductsWebsite.addEventListener('click', () => {
+        window.open('https://www.airproducts.ie/', '_blank');
+    });
+
+    // Add cursor pointer to clickable product items
+    elements.airProductsHandbook.style.cursor = 'pointer';
+    elements.airProductsWebsite.style.cursor = 'pointer';
 });
