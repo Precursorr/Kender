@@ -2336,3 +2336,105 @@ footer {
         inset: 0 0 -3px 0;
     }
 }
+
+/* Coming Soon Page Styles */
+.coming-soon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px - 300px); /* Adjust for header and footer */
+    padding: 2rem;
+    background-color: var(--gray-light);
+}
+
+.coming-soon-content {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 3rem 2rem;
+    box-shadow: var(--shadow-md);
+    border-left: 5px solid var(--lemon-yellow);
+    border-right: 5px solid var(--lemon-yellow);
+}
+
+.coming-soon-content h1 {
+    color: var(--midnight-blue);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.coming-soon-content h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, var(--midnight-blue), var(--midnight-blue-light));
+}
+
+.coming-soon-message {
+    margin-top: 2rem;
+}
+
+.coming-soon-message i {
+    font-size: 4rem;
+    color: var(--lemon-yellow);
+    margin-bottom: 1.5rem;
+    display: block;
+    animation: pulse 2s infinite;
+}
+
+.coming-soon-message h2 {
+    font-size: 2rem;
+    color: var(--midnight-blue);
+    margin-bottom: 1.5rem;
+}
+
+.coming-soon-message p {
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.coming-soon-message .primary-button {
+    margin-top: 2rem;
+    display: inline-block;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 576px) {
+    .coming-soon-content {
+        padding: 2rem 1rem;
+    }
+
+    .coming-soon-content h1 {
+        font-size: 2rem;
+    }
+
+    .coming-soon-message h2 {
+        font-size: 1.5rem;
+    }
+
+    .coming-soon-message p {
+        font-size: 1rem;
+    }
+}
