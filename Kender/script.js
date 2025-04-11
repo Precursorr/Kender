@@ -17,20 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tourOverlay: document.getElementById('tourOverlay'),
         tourClose: document.getElementById('tourClose'),
         tourMainImage: document.getElementById('tourMainImage'),
-        tourThumbnails: document.querySelectorAll('.tour-thumbnail'),
-        // Product items for animation
-        productItems: document.querySelectorAll('.product-item'),
-        sectionDividers: document.querySelectorAll('.section-divider'),
-        // Hobby Weld popup elements
-        hobbyWeldLink: document.getElementById('hobbyWeldLink'),
-        hobbyWeldPopup: document.getElementById('hobbyWeldPopup'),
-        cancelRedirect: document.getElementById('cancelRedirect'),
-        proceedRedirect: document.getElementById('proceedRedirect'),
-        // Clickable product items
-        airProductsHandbook: document.getElementById('airProductsHandbook'),
-        airProductsWebsite: document.getElementById('airProductsWebsite'),
-        tengToolsLink: document.getElementById('tengToolsLink'),
-        sealeyLink: document.getElementById('sealeyLink')
+        tourThumbnails: document.querySelectorAll('.tour-thumbnail')
     };
 
     let isAnimating = false;
@@ -333,98 +320,5 @@ document.addEventListener('DOMContentLoaded', () => {
             nextImage();
         }
     };
-
-    // Scroll animation for elements
-    const animateOnScroll = () => {
-        // Get all elements that need to be animated
-        const animatedElements = document.querySelectorAll('.product-item, .services-list li');
-
-        animatedElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementBottom = element.getBoundingClientRect().bottom;
-            const windowHeight = window.innerHeight;
-
-            // Check if element is in viewport
-            if (elementTop < windowHeight - 100 && elementBottom > 0) {
-                // Add a staggered delay based on the element's position in its container
-                const index = Array.from(element.parentNode.children).indexOf(element);
-                const delay = index * 100; // 100ms delay between each element
-
-                setTimeout(() => {
-                    element.classList.add('animate-in');
-                }, delay);
-            }
-        });
-    };
-
-    // Add scroll event listener for animations
-    window.addEventListener('scroll', debounce(animateOnScroll, 50));
-
-    // Initial check for elements in viewport
-    animateOnScroll();
-
-    // Section dividers no longer have parallax effect as requested by the user
-
-    // Hobby Weld link and popup functionality
-    const hobbyWeldUrl = 'https://hobbyweld.co.uk/products/';
-
-    // Open popup when Hobby Weld link is clicked
-    elements.hobbyWeldLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        elements.hobbyWeldPopup.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
-    });
-
-    // Close popup when Cancel button is clicked
-    elements.cancelRedirect.addEventListener('click', () => {
-        elements.hobbyWeldPopup.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
-    });
-
-    // Redirect to Hobby Weld website when Proceed button is clicked
-    elements.proceedRedirect.addEventListener('click', () => {
-        window.open(hobbyWeldUrl, '_blank');
-        elements.hobbyWeldPopup.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
-    });
-
-    // Close popup when clicking outside the content
-    elements.hobbyWeldPopup.addEventListener('click', (e) => {
-        if (e.target === elements.hobbyWeldPopup) {
-            elements.hobbyWeldPopup.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
-        }
-    });
-
-    // Keyboard support for popup (Escape to cancel)
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && elements.hobbyWeldPopup.classList.contains('active')) {
-            elements.hobbyWeldPopup.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
-        }
-    });
-
-    // Air Products Handbook click handler
-    elements.airProductsHandbook.addEventListener('click', () => {
-        window.open('https://www.sjandrew.com/downloads/air-products-hand-book.pdf', '_blank');
-    });
-
-    // Teng Tools click handler
-    elements.tengToolsLink.addEventListener('click', () => {
-        window.open('https://www.tengtools.com/storage/D7A8ABB8B64C07A8D0653A340F403E35BA30DF5C57D2045DC311C210E594C47C/c212cda624ba437caa31c76e4909e1ae/pdf/media/faae8a6606c3466e9e79b180e50a1f59/tengtools_catalogue_2024_EUR_en-GB.pdf', '_blank');
-    });
-
-    // Sealey click handler
-    elements.sealeyLink.addEventListener('click', () => {
-        window.open('https://edition.pagesuite.com/html5/reader/production/default.aspx?pubname=&pubid=65cb5710-776c-49dc-b450-5380c7ed7df7', '_blank');
-    });
-
-    // Air Products website click handler
-    elements.airProductsWebsite.addEventListener('click', () => {
-        window.open('https://www.airproducts.ie/', '_blank');
-    });
-
-    // Add cursor pointer to clickable product items
-    elements.airProductsHandbook.style.cursor = 'pointer';
-    elements.airProductsWebsite.style.cursor = 'pointer';
 });
+
