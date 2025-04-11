@@ -20,7 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
         tourThumbnails: document.querySelectorAll('.tour-thumbnail'),
         // Product items for animation
         productItems: document.querySelectorAll('.product-item'),
-        sectionDividers: document.querySelectorAll('.section-divider')
+        sectionDividers: document.querySelectorAll('.section-divider'),
+        // Hobby Weld popup elements
+        hobbyWeldLink: document.getElementById('hobbyWeldLink'),
+        hobbyWeldPopup: document.getElementById('hobbyWeldPopup'),
+        cancelRedirect: document.getElementById('cancelRedirect'),
+        proceedRedirect: document.getElementById('proceedRedirect')
     };
 
     let isAnimating = false;
@@ -354,4 +359,43 @@ document.addEventListener('DOMContentLoaded', () => {
     animateOnScroll();
 
     // Section dividers no longer have parallax effect as requested by the user
+
+    // Hobby Weld link and popup functionality
+    const hobbyWeldUrl = 'https://hobbyweld.co.uk/products/';
+
+    // Open popup when Hobby Weld link is clicked
+    elements.hobbyWeldLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        elements.hobbyWeldPopup.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
+    });
+
+    // Close popup when Cancel button is clicked
+    elements.cancelRedirect.addEventListener('click', () => {
+        elements.hobbyWeldPopup.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+
+    // Redirect to Hobby Weld website when Proceed button is clicked
+    elements.proceedRedirect.addEventListener('click', () => {
+        window.open(hobbyWeldUrl, '_blank');
+        elements.hobbyWeldPopup.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+
+    // Close popup when clicking outside the content
+    elements.hobbyWeldPopup.addEventListener('click', (e) => {
+        if (e.target === elements.hobbyWeldPopup) {
+            elements.hobbyWeldPopup.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    });
+
+    // Keyboard support for popup (Escape to cancel)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && elements.hobbyWeldPopup.classList.contains('active')) {
+            elements.hobbyWeldPopup.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    });
 });

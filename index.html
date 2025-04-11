@@ -58,7 +58,7 @@
         </div>
         <section id="products" class="featured-products">
             <div class="product-grid">
-                <a href="#hobby-weld" class="product-link">
+                <a href="javascript:void(0);" class="product-link" id="hobbyWeldLink">
                     <div class="product-item">
                         <div class="product-image" style="background-image: url('assets/featured/Hobby-Weld-Product-Logo.jpg')"></div>
                         <h3>Hobby Weld</h3>
@@ -241,6 +241,18 @@
                 <div class="tour-thumbnail" data-index="1">
                     <div class="placeholder-text">2</div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hobby Weld Redirect Popup -->
+    <div id="hobbyWeldPopup" class="popup-overlay">
+        <div class="popup-content">
+            <h3>External Website Notice</h3>
+            <p>You are about to visit <strong>hobbyweld.co.uk</strong>. Please note that the prices may vary in Ireland as the website is based in the UK and therefore shows Pounds instead of Euro.</p>
+            <div class="popup-buttons">
+                <button id="cancelRedirect" class="secondary-button">Cancel</button>
+                <button id="proceedRedirect" class="primary-button">Proceed <i class="fas fa-external-link-alt"></i></button>
             </div>
         </div>
     </div>

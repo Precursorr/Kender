@@ -712,7 +712,8 @@ body {
 }
 
 /* Virtual Tour Overlay */
-.tour-overlay {
+.tour-overlay,
+.popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -729,7 +730,8 @@ body {
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.tour-overlay.active {
+.tour-overlay.active,
+.popup-overlay.active {
     opacity: 1;
     visibility: visible;
 }
@@ -2008,6 +2010,89 @@ footer {
 
     .hero-content {
         padding-top: 0;
+    }
+}
+
+/* Popup Styles */
+.popup-content {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    animation: fadeInUp 0.4s ease-out;
+    border-left: 5px solid var(--lemon-yellow);
+    border-right: 5px solid var(--lemon-yellow);
+}
+
+.popup-content h3 {
+    color: var(--midnight-blue);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.popup-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--midnight-blue), var(--midnight-blue-light));
+}
+
+.popup-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    font-size: 1.1rem;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.popup-buttons .secondary-button {
+    background-color: var(--gray-light);
+    color: var(--midnight-blue);
+    border: 2px solid var(--midnight-blue);
+}
+
+.popup-buttons .secondary-button:hover {
+    background-color: var(--gray-dark);
+    color: var(--midnight-blue);
+}
+
+.popup-buttons .primary-button,
+.popup-buttons .secondary-button {
+    min-width: 120px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+}
+
+@media (max-width: 576px) {
+    .popup-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .popup-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .popup-buttons button {
+        width: 100%;
     }
 }
 
