@@ -102,35 +102,41 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.logo.addEventListener('click', smoothScroll);
 
     // Home link event listener
-    elements.homeLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        smoothScroll();
-        // Close mobile menu if open
-        if (elements.navLinks.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
+    if (elements.homeLink) {
+        elements.homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            smoothScroll();
+            // Close mobile menu if open
+            if (elements.navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    }
 
     // Products link event listener
-    elements.productsLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        smoothScrollToElement(elements.productsDivider);
-        // Close mobile menu if open
-        if (elements.navLinks.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
+    if (elements.productsLink) {
+        elements.productsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            smoothScrollToElement(elements.productsDivider);
+            // Close mobile menu if open
+            if (elements.navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    }
 
     // Catalogues link event listener
-    elements.cataloguesLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        // Add a small positive offset to ensure it sits flush with the navbar
-        smoothScrollToElement(elements.cataloguesDivider, 1);
-        // Close mobile menu if open
-        if (elements.navLinks.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
+    if (elements.cataloguesLink) {
+        elements.cataloguesLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Add a small positive offset to ensure it sits flush with the navbar
+            smoothScrollToElement(elements.cataloguesDivider, 1);
+            // Close mobile menu if open
+            if (elements.navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    }
 
     elements.scrollTopLink?.addEventListener('click', (e) => {
         e.preventDefault();
@@ -138,10 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Hero Catalogues button event listener
-    elements.heroCataloguesButton.addEventListener('click', () => {
-        // Use the same behavior as the header Catalogues link
-        smoothScrollToElement(elements.cataloguesDivider, 1);
-    });
+    if (elements.heroCataloguesButton) {
+        elements.heroCataloguesButton.addEventListener('click', () => {
+            // Use the same behavior as the header Catalogues link
+            smoothScrollToElement(elements.cataloguesDivider, 1);
+        });
+    }
 
     // Close menu when clicking outside
     document.addEventListener('click', debounce((e) => {
@@ -154,8 +162,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100));
 
     // Initialize slideshow
-    elements.slides[0].classList.add('active');
-    setInterval(nextSlide, 8000);
+    if (elements.slides.length > 0) {
+        elements.slides[0].classList.add('active');
+        setInterval(nextSlide, 8000);
+    }
 
     // Virtual Tour functionality
     let currentTourImage = 0;
@@ -262,30 +272,41 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Event listeners for virtual tour
-    elements.tourButton.addEventListener('click', openTourOverlay);
-    elements.tourClose.addEventListener('click', closeTourOverlay);
+    if (elements.tourButton) {
+        elements.tourButton.addEventListener('click', openTourOverlay);
+    }
+
+    if (elements.tourClose) {
+        elements.tourClose.addEventListener('click', closeTourOverlay);
+    }
 
     // Pre-load the Street View iframe to avoid delay on first click
-    elements.streetViewFrame.src = tourImages[0].streetViewUrl;
+    if (elements.streetViewFrame) {
+        elements.streetViewFrame.src = tourImages[0].streetViewUrl;
+    }
 
     // Close overlay when clicking outside the content
-    elements.tourOverlay.addEventListener('click', (e) => {
-        if (e.target === elements.tourOverlay) {
-            closeTourOverlay();
-        }
-    });
+    if (elements.tourOverlay) {
+        elements.tourOverlay.addEventListener('click', (e) => {
+            if (e.target === elements.tourOverlay) {
+                closeTourOverlay();
+            }
+        });
+    }
 
     // Thumbnail click event
-    elements.tourThumbnails.forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            const index = parseInt(thumb.getAttribute('data-index'));
-            updateTourImage(index);
+    if (elements.tourThumbnails.length > 0) {
+        elements.tourThumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const index = parseInt(thumb.getAttribute('data-index'));
+                updateTourImage(index);
+            });
         });
-    });
+    }
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-        if (!elements.tourOverlay.classList.contains('active')) return;
+        if (!elements.tourOverlay || !elements.tourOverlay.classList.contains('active')) return;
 
         if (e.key === 'Escape') {
             closeTourOverlay();
@@ -305,20 +326,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let touchEndY = 0;
 
     // Set up touch event listeners on the tour content (not the Street View iframe)
-    elements.tourContent.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
-    }, false);
+    if (elements.tourContent) {
+        elements.tourContent.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
 
-    elements.tourContent.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        touchEndY = e.changedTouches[0].screenY;
+        elements.tourContent.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
 
-        // Only handle as swipe if it's a horizontal swipe (not a tap or vertical swipe)
-        if (Math.abs(touchEndX - touchStartX) > Math.abs(touchEndY - touchStartY)) {
-            handleSwipe();
-        }
-    }, false);
+            // Only handle as swipe if it's a horizontal swipe (not a tap or vertical swipe)
+            if (Math.abs(touchEndX - touchStartX) > Math.abs(touchEndY - touchStartY)) {
+                handleSwipe();
+            }
+        }, { passive: true });
+    }
 
     // Handle the swipe direction
     const handleSwipe = () => {
@@ -358,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Add scroll event listener for animations
-    window.addEventListener('scroll', debounce(animateOnScroll, 50));
+    window.addEventListener('scroll', debounce(animateOnScroll, 50), { passive: true });
 
     // Initial check for elements in viewport
     animateOnScroll();
@@ -369,62 +392,82 @@ document.addEventListener('DOMContentLoaded', () => {
     const hobbyWeldUrl = 'https://hobbyweld.co.uk/products/';
 
     // Open popup when Hobby Weld link is clicked
-    elements.hobbyWeldLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        elements.hobbyWeldPopup.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
-    });
+    if (elements.hobbyWeldLink && elements.hobbyWeldPopup) {
+        elements.hobbyWeldLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            elements.hobbyWeldPopup.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
+        });
+    }
 
     // Close popup when Cancel button is clicked
-    elements.cancelRedirect.addEventListener('click', () => {
-        elements.hobbyWeldPopup.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
-    });
-
-    // Redirect to Hobby Weld website when Proceed button is clicked
-    elements.proceedRedirect.addEventListener('click', () => {
-        window.open(hobbyWeldUrl, '_blank');
-        elements.hobbyWeldPopup.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
-    });
-
-    // Close popup when clicking outside the content
-    elements.hobbyWeldPopup.addEventListener('click', (e) => {
-        if (e.target === elements.hobbyWeldPopup) {
+    if (elements.cancelRedirect && elements.hobbyWeldPopup) {
+        elements.cancelRedirect.addEventListener('click', () => {
             elements.hobbyWeldPopup.classList.remove('active');
             document.body.style.overflow = ''; // Restore scrolling
-        }
-    });
+        });
+    }
+
+    // Redirect to Hobby Weld website when Proceed button is clicked
+    if (elements.proceedRedirect && elements.hobbyWeldPopup) {
+        elements.proceedRedirect.addEventListener('click', () => {
+            window.open(hobbyWeldUrl, '_blank', 'noopener,noreferrer');
+            elements.hobbyWeldPopup.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        });
+    }
+
+    // Close popup when clicking outside the content
+    if (elements.hobbyWeldPopup) {
+        elements.hobbyWeldPopup.addEventListener('click', (e) => {
+            if (e.target === elements.hobbyWeldPopup) {
+                elements.hobbyWeldPopup.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        });
+    }
 
     // Keyboard support for popup (Escape to cancel)
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && elements.hobbyWeldPopup.classList.contains('active')) {
+        if (e.key === 'Escape' && elements.hobbyWeldPopup && elements.hobbyWeldPopup.classList.contains('active')) {
             elements.hobbyWeldPopup.classList.remove('active');
             document.body.style.overflow = ''; // Restore scrolling
         }
     });
 
     // Air Products Handbook click handler
-    elements.airProductsHandbook.addEventListener('click', () => {
-        window.open('https://www.sjandrew.com/downloads/air-products-hand-book.pdf', '_blank');
-    });
+    if (elements.airProductsHandbook) {
+        elements.airProductsHandbook.addEventListener('click', () => {
+            window.open('https://www.sjandrew.com/downloads/air-products-hand-book.pdf', '_blank', 'noopener,noreferrer');
+        });
+    }
 
     // Teng Tools click handler
-    elements.tengToolsLink.addEventListener('click', () => {
-        window.open('https://www.tengtools.com/storage/D7A8ABB8B64C07A8D0653A340F403E35BA30DF5C57D2045DC311C210E594C47C/c212cda624ba437caa31c76e4909e1ae/pdf/media/faae8a6606c3466e9e79b180e50a1f59/tengtools_catalogue_2024_EUR_en-GB.pdf', '_blank');
-    });
+    if (elements.tengToolsLink) {
+        elements.tengToolsLink.addEventListener('click', () => {
+            window.open('https://www.tengtools.com/storage/D7A8ABB8B64C07A8D0653A340F403E35BA30DF5C57D2045DC311C210E594C47C/c212cda624ba437caa31c76e4909e1ae/pdf/media/faae8a6606c3466e9e79b180e50a1f59/tengtools_catalogue_2024_EUR_en-GB.pdf', '_blank', 'noopener,noreferrer');
+        });
+    }
 
     // Sealey click handler
-    elements.sealeyLink.addEventListener('click', () => {
-        window.open('https://edition.pagesuite.com/html5/reader/production/default.aspx?pubname=&pubid=65cb5710-776c-49dc-b450-5380c7ed7df7', '_blank');
-    });
+    if (elements.sealeyLink) {
+        elements.sealeyLink.addEventListener('click', () => {
+            window.open('https://edition.pagesuite.com/html5/reader/production/default.aspx?pubname=&pubid=65cb5710-776c-49dc-b450-5380c7ed7df7', '_blank', 'noopener,noreferrer');
+        });
+    }
 
     // Air Products website click handler
-    elements.airProductsWebsite.addEventListener('click', () => {
-        window.open('https://www.airproducts.ie/', '_blank');
-    });
+    if (elements.airProductsWebsite) {
+        elements.airProductsWebsite.addEventListener('click', () => {
+            window.open('https://www.airproducts.ie/', '_blank', 'noopener,noreferrer');
+        });
+    }
 
     // Add cursor pointer to clickable product items
-    elements.airProductsHandbook.style.cursor = 'pointer';
-    elements.airProductsWebsite.style.cursor = 'pointer';
+    if (elements.airProductsHandbook) {
+        elements.airProductsHandbook.style.cursor = 'pointer';
+    }
+    if (elements.airProductsWebsite) {
+        elements.airProductsWebsite.style.cursor = 'pointer';
+    }
 });
