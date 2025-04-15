@@ -135,6 +135,7 @@
                             loading="lazy"
                             fetchpriority="high"
                             referrerpolicy="no-referrer-when-downgrade"
+                            allow="fullscreen; geolocation"
                             title="Kender Engineering Solutions Location Map">
                         </iframe>
                     </div>
@@ -221,7 +222,7 @@
             <div class="footer-section">
                 <h4>Follow Us</h4>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
         </div>
@@ -238,7 +239,7 @@
                 <div id="tourContent" class="tour-content-container" style="display: none;">
                     <div class="placeholder-text">Virtual Tour Image 1</div>
                 </div>
-                <iframe id="streetViewFrame" class="street-view-frame" allowfullscreen allow="fullscreen" loading="lazy"></iframe>
+                <iframe id="streetViewFrame" class="street-view-frame" allow="fullscreen; geolocation; accelerometer; gyroscope; magnetometer" loading="lazy"></iframe>
             </div>
             <div class="tour-thumbnails">
                 <div class="tour-thumbnail active" data-index="0">
